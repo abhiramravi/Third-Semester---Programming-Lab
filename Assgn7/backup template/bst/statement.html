@@ -1,0 +1,60 @@
+<body>
+<h1>Himalaya Food Court, Tokens and Trees</h1>
+
+  <blockquote>
+    <p><b>Note: All code should be written within <a href="">this template directory</a></b>. Test cases have been provided in the folder <code>tests</code>, and can be run using <code>make test</code>. </p> 
+    <i>Only a bare-bones skeleton of Makefile has been given; you will need to write the remainder yourself.</i>
+  </blockquote>
+
+<p>
+In the Himalaya Food Court, the cashier at the counter gives customers two
+tokens for their order. They submit one token at the food counter, and wait
+until their food arrives. When it does, their token number will be called, they
+will return the second token to verify that the order was theirs, and then pick
+up the food.
+</p>
+
+<p>
+This is a fairly simple system, and any token based system will operate
+similarly. Conceptually, we need to store a <i>collection</i> of tokens. When a
+customer gives the first token, we need to add it to this collection. When the
+customer returns the second token, we need to be able to search through this
+collection, and if the token was found in the collection, it must be removed
+from it. Many different data structures could be used to store this collection,
+for example the linked lists you have already used. 
+</p>
+
+<p>
+We will look at another way of storing these items; in a binary search tree.
+Both adding and removing items to this list takes time on the order of the
+<i>height of the tree</i>, which can well be logarithmic in the number of nodes
+in the tree, and thus can be far more efficient than using a linked list. 
+</p>
+
+<h2>Binary Search Tree</h2>
+<p>
+Implement a <a href="http://en.wikipedia.org/wiki/Binary_search_tree">binary
+  search tree</a> with support for the following operations:
+<ul>
+    <li>Adding a integer to the tree.</li>
+    <li>Removing a integer to the tree.</li>
+    <li>Searching for a integer to the tree.</li>
+    <li>Printing the values of the tree in sorted order.</li>
+    <li>Printing the values of the tree in a breadth-first manner.</li>
+</ul>
+</p>
+
+<h2>The Token System</h2>
+<p>
+You will be given input as a stream of token numbers; the stream will be
+terminated with an input of -1. For every token number, check if the token
+already exists in the collection; if it does not, then add it, else remove it.
+After each token number, print the whole entire collection in sorted order.
+</p>
+
+<p>
+<b>Extra Credit:</b>Compare the performance of the token system implemented
+using a linked list instead of the binary search tree. 
+</p>
+
+</body>

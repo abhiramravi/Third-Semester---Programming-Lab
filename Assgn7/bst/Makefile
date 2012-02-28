@@ -1,0 +1,44 @@
+# Makefile
+#
+
+SH = bash
+CFLAGS = -g
+LDFLAGS = -lm
+
+all: token tokenllist
+
+token: token.o BSTree.o queue.o
+	gcc $(LDFLAGS) $^ -o $@
+
+token.o: token.c BSTree.h queue.h
+	gcc -c $(CFLAGS) $< -o $@
+
+tokenllist: tokenllist.o BSTree.o queue.o LList.o
+	gcc $(LDFLAGS) $^ -o $@
+
+tokenllist.o: tokenllist.c BSTree.h queue.h LList.h
+	gcc -c $(CFLAGS) $< -o $@
+
+BSTree.o: BSTree.c BSTree.h queue.h
+	gcc -c $(CFLAGS) $< -o $@
+
+queue.o: queue.c queue.h BSTree.h
+	gcc -c $(CFLAGS) $< -o $@
+
+LList.o: LList.c LList.h 
+	gcc -c $(CFLAGS) $< -o $@
+
+.PHONY: clean lint test
+
+clean:
+	rm -rf *.o
+	rm -rf token
+	rm -rf tokenllist
+	rm -rf tests/*_
+
+lint:
+	for f in *.c; do echo $$f; splint -standard $$f; done;
+
+test: all
+	$(SH) tests/run_tests.sh
+

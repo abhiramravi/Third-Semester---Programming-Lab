@@ -1,0 +1,10 @@
+a0 + 1/( a1 + 1/( a2 + 1/a3 ) )
+
+rational_add(rational_from_int(a1), rational_reciprocate(rational_add(rational_from_int(a2), rational_reciprocate(rational_from_int(a3)))))
+
+
+
+  if(k==1) return rational_from_int(a[0]);
+    else return continued_fraction(rational_add(rational_from_int(a[k-1]),rational_reciprocate(rational_from_int(a[k]))));
+    
+    if you get that arbit error again, make typedef struct blah{....} blah; is the way you have written it. blah and blah only must be used

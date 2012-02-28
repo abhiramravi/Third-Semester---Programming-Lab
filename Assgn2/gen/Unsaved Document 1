@@ -1,0 +1,21 @@
+/**
+This is a library for operating on rational numbers 
+Author : Abhiram R  -  (CS10B060)
+Date : 12.8.11
+*/
+{
+    int i;
+    int max;
+    if((*rat_num_ptr).p>(*rat_num_ptr).q) max=(*rat_num_ptr).p;
+    else max=(*rat_num_ptr).q;
+    for(i=1;i<max;i++)                  /* is it max that needs to be used?*/
+    {
+        if((*rat_num_ptr).p%i==0 && (*rat_num_ptr).q%i==0) 
+        {
+            (*rat_num_ptr).p = (*rat_num_ptr).p/i;
+            (*rat_num_ptr).q = (*rat_num_ptr).q/i;
+        }
+    }
+}
+
+

@@ -1,0 +1,48 @@
+<body>
+
+  <blockquote>
+  <p><b>Note: All code should be written within <a href="">this template directory</a></b>. Test cases have been provided in the folder <code>tests</code>, and can be run using <code>make test</code>. </p> 
+  </blockquote>
+
+<h2>Pickling: Saving data structures for posterity</h2>
+<p>
+Pickling, also known as <a
+  href="http://en.wikipedia.org/wiki/Marshalling_(computer_science)">marshalling</a>
+  is the process of saving an object in memory to a file (or transmitting it
+  over a network). As you would have learnt by now, files are really just byte
+  streams; how do you take a data structure like a matrix, or linked list or,
+  something more complex, like a tree, and save it to a file? Another example
+  to think about would be; how do computer games save your progress in a game
+  so that you can resume from there sometime later?
+</p>
+
+<p>
+In this assignment, you will read a matrix of <em>rational</em> numbers from
+file, perform some operations on it, and then write it back to a file. Some
+partial code will be given to you, implementing several operations on rational
+numbers. You will need to complete the following functions:
+
+<ul>
+
+<li> <code>MatrixRational* matrix_rational_alloc( int rows, int cols )</code>: Allocate the memory for a <code>row</code> by <code>cols</code> matrix of rational numbers. You need not initialise the entries of this matrix. (Check <code>matrix_rational_zeros</code>). </li>
+<li> <code>MatrixRational* matrix_rational_mul( MatrixRational* m1, MatrixRational* m2 )</code>: Multiply two matrices of rational numbers. The semantics of this are identical to multiplying to integer or float matrices. </li>
+<li> <code>MatrixRational* matrix_rational_load_txt( char* filename )</code>: Read a rational matrix from a text file. The format (check <code>tests/in-1-*</code> for examples) is:
+<pre>
+[rows] [cols]
+num11/denom11 num12/denom12 ...
+num21/denom21 num22/denom22 ...
+...
+</pre>
+You are advised to use the <code>strtok_r</code> function. Look at <code>rational_parse</code> for an example.
+</li>
+<li> <code>MatrixRational* matrix_rational_load_bin( char* filename )</code>: Read a rational matrix from a <em>binary</em> file. The format (check <code>tests/in-2-*</code> for examples) is:
+<pre>
+[rows][cols][bytes for rational11][bytes for rational12]...
+</pre>
+</li>
+<li> <code>void matrix_rational_save_txt( MatrixRational* m, char* filename )</code>: Save a rational matrix in the same text format</li>
+<li> <code>void matrix_rational_save_bin( MatrixRational* m, char* filename )</code>: Save a rational matrix in the same binary format</li>
+</ul>
+</p>
+
+</body>

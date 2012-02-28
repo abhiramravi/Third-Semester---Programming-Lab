@@ -1,0 +1,64 @@
+/*
+ * Author: Abhiram
+ * Polynomial data structure (Implementation)
+ */
+
+#include <stdio.h>
+#include "polynomial.h"
+
+// Construct a polynomial from a list of 'n' coefficients stored in 'coeffs'.
+polynomial polynomial_construct ( int n )
+{
+  int i;
+  polynomial p;
+  p.n = n;
+  for( i = 0; i<n; i++ )
+  {
+    p.re_coeffs[i] = 0;
+    p.im_coeffs[i] = 0;
+  }
+
+  return p;
+}
+
+// Print the polynomial q in the format a0 x^0 + a1 x^1 ...
+void polynomial_print ( polynomial p )
+{
+  int i;
+  for( i=p.n-1; i>0; i--) 
+  {
+    printf( "(%d+i%d)x^%d + ", p.re_coeffs[i], p.im_coeffs[i], i );
+  }
+  printf( "(%d+i%d)\n", p.re_coeffs[0], p.im_coeffs[0] );
+}
+
+// Operations on polynomials
+polynomial polynomial_add ( polynomial p, polynomial q )
+{
+  int i;
+  polynomial r = polynomial_construct( p.n );
+  for( i=0; i<p.n; i++ )
+  {
+    r.re_coeffs[ i ] = p.re_coeffs[ i ] + q.re_coeffs[ i ];
+    r.im_coeffs[ i ] = p.im_coeffs[ i ] + q.im_coeffs[ i ];
+  }
+
+  return r;
+}
+
+polynomial polynomial_mul ( polynomial p, polynomial q )
+{
+  int i,j;
+  polynomial r = polynomial_construct( p.n + q.n  );
+
+  for( i=0; i<p.n; i++ )
+  {
+    for( j=0; j<q.n; j++ )
+    {
+      r.re_coeffs[ i+j ] += p.re_coeffs[ i ]*q.re_coeffs[ j ] - p.im_coeffs[ i ]*q.im_coeffs[ j ];;
+      r.im_coeffs[ i+j ] += p.re_coeffs[ i ]*q.im_coeffs[ j ] - p.im_coeffs[ i ]*q.re_coeffs[ j ];;
+    }
+  }
+
+  return r;
+}

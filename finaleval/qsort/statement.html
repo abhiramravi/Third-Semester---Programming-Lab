@@ -1,0 +1,42 @@
+<body>
+<h2>Quick Sort</h2>
+
+<blockquote>
+  <p><b>Note: All code should be written within <a href="">this template
+      directory</a></b>. Test cases have been provided in the folder
+  <code>tests</code>, and can be run using <code>make test</code>. </p> 
+</blockquote>
+
+<p>
+<a href="http://en.wikipedia.org/wiki/Quick_sort">Quick sort</a> is
+widely accepted as the fastest (hence the name) comparison sort
+algorithm. The key to quick sort is the following simple observation;
+a list is sorted if any disjoint range is ordered. At a high level, it proceeds as follows:
+
+<ol>
+  <li>Given a range, choose any element in it. Call it the pivot.</li>
+  <li>Rearrange all the elements of the list less than the pivot to be
+  to it's left, and similarly rearrange all elements greater than it to
+  be on it's right.</li>
+  <li>Repeat this procedure for the elements to the left of the pivot,
+  and for the elements to the right of the pivot.</li>
+</ol>
+</p>
+
+<p>
+Though this description is naturally recursive, the subproblem (sorting
+the elements to the right or left of the pivot) can be attempted in any
+order. In this assignment you will use a stack (provided) to store the
+thus far unsorted partitions. Try to use loop invariants to partition
+the elements in the list, and to correctly add and remove partitions
+from the stack.
+</p>
+
+<h3>Sample Input/Output</h3>
+<p>
+<b>Input:</b> <code>5
+3 4 7 3 -5 </code> <br /> 
+<b>Output:</b> <code>-5 3 3 4 7</code>
+</p>
+
+</body>

@@ -1,0 +1,31 @@
+#include "combinatorial.h"
+
+unsigned int factorial( unsigned int n, unsigned int *store)
+{
+	unsigned int i, f; 
+
+	store[0] = 1;
+	for( i = 1; i <= n; i++) {
+		f *= i;
+		store[i] = f;
+	}
+	return f;
+}
+
+unsigned int n_C_k( unsigned int n, unsigned int k, unsigned int *factorial_store)
+{
+	unsigned int N, denominator;
+	denominator = factorial_store[k] * factorial_store[n-k];
+	N = factorial_store[n] / denominator;
+	
+	return N;
+}
+
+
+
+
+
+
+	
+	
+

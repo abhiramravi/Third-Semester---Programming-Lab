@@ -1,0 +1,31 @@
+# Makefile
+#
+
+SH = bash
+CFLAGS = -g
+LDFLAGS =
+
+all: combinatorial
+
+combinatorial: combinatorial.o unit.o
+	gcc $(LDFLAGS) $^ -o $@
+
+combinatorial.o: combinatorial.c combinatorial.h
+	gcc -c $(CFLAGS) $< -o $@
+
+unit.o: unit.c combinatorial.h
+	gcc -c $(CFLAGS) $< -o $@
+
+.PHONY: clean lint test
+
+clean:
+	rm -rf *.o
+	rm -rf flow
+	rm -rf tests/*_
+
+lint:
+	for f in *.c; do echo $$f; splint -standard $$f; done;
+
+test: all
+	$(SH) tests/run_tests.sh
+

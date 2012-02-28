@@ -1,0 +1,107 @@
+<body>
+
+  <blockquote>
+    <p><b>Note: All code should be written within <a href="">this template directory</a></b>. Test cases have been provided in the folder <code>tests</code>, and can be run using <code>make test</code>. </p> 
+    <i>This is a moderately difficult assignment. It is recommended that you implement functions in order of presentation in <code>LList.h</code>, and test as and when possible.</i>
+  </blockquote>
+
+  <blockquote>
+    <p><b>Note: The template code has been updated with the 'shell' completed in main.c, as well as the test cases.</b></p>
+  </blockquote>
+
+<h2>Linked Lists</h2>
+<p>
+Implement a linked list with at least the following operations:
+<ul>
+    <li>
+    <code> LList* llist_new() </code> Create an empty list (head shall be NULL)
+    </li>
+
+    <li>
+    <code> int llist_size( LList* list ) </code> Traverse the linked list and
+    return its size
+    </li>
+
+    <li>
+    <code> void llist_print( LList* list ) </code> Traverse the linked list and
+    print each element
+    </li>
+
+    <li>
+    <code> LList* llist_append( LList* lst, int data ) </code> Add a new
+    element at the end of the list
+    </li>
+    <li>
+    <code> LList* llist_prepend( LList* lst, int data ) </code> Add a new
+    element at the beginning of the list
+    </li>
+    <li>
+    <code> LList* llist_insert( LList* lst, int idx, int data ) </code> Add a
+    new element at the @idx index
+    </li>
+
+    <li>
+    <code> LList* llist_remove_last( LList* lst ) </code> Remove an element
+    from the end of the list
+    </li>
+    <li>
+    <code> LList* llist_remove_first( LList* lst ) </code> Remove an element
+    from the beginning of the list
+    </li>
+    <li>
+    <code> LList* llist_remove( LList* lst, int idx ) </code> Remove an element
+    from an arbitrary position in the list
+    </li>
+</ul>
+</p>
+
+<h2>List Command Shell</h2>
+<p>
+A basic command interface has been written for you in <code>main.c</code>,
+which allows you to enter commands like <code>append 1</code>, etc. to append 1
+to the list. As you implement the above functions, uncomment the corresponding
+function calls to them (these have been marked with a NOTE), and test them out.
+Once you are done, remove the debug print statements (also marked with a NOTE).
+</p>
+
+<p>
+The following commands are supported by the basic shell,
+<ul>
+    <li> 
+    <code>quit</code>: Leave the command shell. Pressing "Ctrl+D" also quits the command shell.
+    </li>
+
+    <li>
+    <code>count</code>: Print the number of elements in the linked list    
+    </li>
+
+    <li>
+    <code>append x</code>: Appends the integer 'x'.
+    </li>
+    <li>
+    <code>prepend x</code>: Prepends the integer 'x'.
+    </li>
+    <li>
+    <code>insert x y</code>: Prepends the integer 'y' at position 'x' in the
+    list. Position 0 is the very beginning of the list, and <code>insert 0
+      x</code> is the same as <code>prepend x</code>.
+    </li>
+
+    <li>
+    <code>remove-last</code>: Remove the last element of the list.
+    </li>
+    <li>
+    <code>remove-first</code>: Remove the first element of the list.
+    </li>
+    <li>
+    <code>remove x</code>: Remove the 'x'-th element of the list.
+    </li>
+
+    <li>
+    <code>print x</code>: Print the 'x'-th element of the list.
+    </li>
+
+</ul>
+</p>
+
+</body>

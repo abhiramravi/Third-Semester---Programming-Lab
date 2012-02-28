@@ -1,0 +1,126 @@
+/*
+ * Abhiram CS10B060
+ * Quick Sort
+ */
+
+#include "Stack.h"
+#include "qsort.h"
+#include <stdlib.h>
+
+#define INTSWAP(x,y) { int tmp; tmp = x; x = y; y = tmp; }
+
+// A range represents [start, end) (end is not included)
+typedef struct Range_ {
+  int start;
+  int end;
+} Range;
+
+Range mk_range( int start, int end )
+{
+  Range r = {start, end};
+  return r;
+}
+
+// A wrapper over stack functions to push and pop ranges instead of just
+// integers.
+Stack* stack_push_range( Stack* st, Range r )
+{
+  stack_push( st, r.start );
+  return stack_push( st, r.end );
+}
+
+Range stack_top_range( Stack* st )
+{
+  int start, end;
+  end = stack_top( st, NULL ); stack_pop( st );
+  start = stack_top( st, NULL ); stack_push( st, end );
+  return mk_range( start, end );
+}
+
+Stack* stack_pop_range( Stack* st )
+{
+  stack_pop( st );
+  return stack_pop( st );
+}
+
+// Partition array @arr between @i and @j so that all elements < @p are
+// rearranged to be to the left of p, and all the elements > @p are
+// rearranged to be to the right of p. Should return the new index of the pivot.
+// Note: Though the elements are rearranged, they need not be in sorted
+// order. For example, [3,4,9,1,7] can be partitioned about 4 as [1,3,
+// 4, 9, 7].
+int partition( int* arr, int i, int j, int p )
+{
+  int indexOfPivot = p;
+  int valueOfPivot = arr[p];
+ 
+  int r,s,a,b; 
+  
+  for( r=i; r<j; r++ ) 
+  {
+  	int valueToShift = arr[r];
+  	
+    if( arr[r] < valueOfPivot && r > indexOfPivot )
+    {
+        b = r-1;
+        while( b >= i )
+        {
+            arr[b+1] = arr[b];
+            b--;
+        }
+        arr[i] = valueToShift;
+        
+        if( r > indexOfPivot ) indexOfPivot++; //index of the pivot changes
+    }
+    if( arr[r] > valueOfPivot && r < indexOfPivot)
+    {
+        b = r;
+        while( b < j-1 )
+        {
+            arr[b] = arr[b+1];
+            b++;
+        }
+        arr[j-1] = valueToShift;
+        
+        	indexOfPivot--;
+        	r--;
+
+    }
+    if( arr[r] == valueOfPivot && r == indexOfPivot );
+  }
+  return indexOfPivot;
+}
+
+// Write an iterative program to sort the integers in the array using
+// the property that if $s$ 
+void QSort( int n, int* arr )
+{
+  // Use the stack to store partitions that still need to ordered
+  Stack *st = stack_new();
+  int pivot;
+
+  stack_push_range( st, mk_range( 0, n ) );
+  while( stack_size( st ) > 0 )
+  {
+    Range r = stack_top_range( st ); stack_pop_range( st );
+    
+    if( r.end - r.start == 2 )
+    {
+    		if( arr[r.start] >= arr[r.end - 1] ) //INTSWAP( arr[r.start], arr[r.end] );
+    		{
+    			int temp = arr[r.start];
+    			arr[r.start] = arr[r.end - 1];
+    			arr[r.end - 1] = temp;
+    		}
+    }
+    if( r.end - r.start > 2 )
+    {
+		pivot = r.start + ( r.end - r.start )/2 ;
+		pivot = partition( arr, r.start, r.end, pivot );
+		stack_push_range( st, mk_range( r.start, pivot ) );
+		stack_push_range( st, mk_range( pivot + 1 , r.end ) );
+    }
+    
+  }
+}
+

@@ -1,0 +1,91 @@
+<body>
+
+  <blockquote>
+    <p>
+    <b>Note: All code should be written within <a href="">this template
+        directory</a></b>. Test cases have been provided in the folder
+    <code>tests</code>, and can be run using <code>make test</code>.
+   </p>
+  </blockquote>
+
+<h2>Representing a Polygon</h2>
+<p>
+A polygon can be representing by listing its vertices in a clockwise or
+anti-clockwise manner. Implement a structure <code>Point</code> to store the
+coordinates of a vertex, and use a circularly linked list to store the vertices
+in a clockwise manner. We will then use these primitive data structures to
+define functions on the polygon.
+</p>
+
+<h2>Circularly Linked Lists</h2>
+<p>
+The <a
+  href="http://en.wikipedia.org/wiki/Linked_list#Linear_and_circular_lists">
+  circularly linked list </a> is a slight modification of the conventional
+singly linked list in which the last element is linked to the first element. 
+</p>
+
+<p>
+Implement a circularly linked list with at least the following operations:
+<ul>
+
+  <li> <code>CLinkedList* clinked_list_new()</code>: Create a new empty list.
+  </li>
+  <li> <code>void clinked_list_delete( CLinkedList* lst )</code>: Deletes the
+  list, frees memory. </li>
+
+  <li> <code>int clinked_list_size( CLinkedList* lst )</code>: Returns the
+  number of elements in the stack </li>
+
+  <li> <code>CLinkedList* clinked_list_insert( CLinkedList* lst, int i, Point
+  val )</code>: Inserts <code>val</code> at the 'i-th' index of the list.</li>
+  <li> <code>CLinkedList* clinked_list_push_front( CLinkedList* lst, Point val
+    )</code>: Inserts <code>val</code> at the beginning of the list.</li>
+  <li> <code>CLinkedList* clinked_list_push_back( CLinkedList* lst, Point val
+    )</code>: Inserts <code>val</code> at the end of the list.</li>
+
+  <li> <code>CLinkedList* clinked_list_remove( CLinkedList* lst, int i
+  )</code>: Removes element at the 'i-th' index </li>
+  <li> <code>CLinkedList* clinked_list_pop_front( CLinkedList* lst )</code>:
+  Removes the element at the beginning of the list.</li>
+  <li> <code>CLinkedList* clinked_list_push_back( CLinkedList* lst )</code>:
+  Removes the element at the end of the list.</li>
+
+  <li> <code>Point* clinked_list_get( CLinkedList* lst, int at )</code>: Gets a
+  pointer to element at the 'i-th' index </li>
+  <li> <code>Point* clinked_list_front( CLinkedList* lst )</code>: Gets the
+  element at the beginning of the list.</li>
+  <li> <code>Point* clinked_list_back( CLinkedList* lst )</code>: Gets the
+  element at the end of the list.</li>
+
+  <li> <code>void clinked_list_print( CLinkedList* lst )</code>: Prints the
+elements currently in the stack </li>
+</ul>
+</p>
+
+<h2>Representing a Polygon</h2>
+<p>Implement a Polygon using the following functions: </p>
+<ul>
+  <li> <code> Polygon* polygon_new(); </code> Create a new polygon - with no vertices </li>
+  <li> <code> void polygon_delete( Polygon* poly ); </code> Deletes the polygon, freeing all vertices. </li>
+  <li> <code> Polygon* polygon_add_vertex( Polygon* poly, Point p ); </code> Add a vertex </li>
+  <li> <code> Polygon* polygon_remove_vertex( Polygon* poly, Point p ); </code> Remove a vertex </li>
+  <li> <code> int polygon_size( Polygon* poly ); </code> Returns the number of vertices in the polygon </li>
+  <li> <code> void polygon_print( Polygon* poly ); </code> Prints the vertices in the polygon </li>
+  <li> <code> Point polygon_centroid( Polygon* poly ); </code> Find the centroid of the polygon </li>
+  <li> <code> double polygon_area( Polygon* poly ); </code> Find the <a
+    href="http://en.wikipedia.org/wiki/Polygon#Area_and_centroid">area of the
+    polygon</a>. You can do this by summing up the areas of each triangle
+  formed between two vertices and the centroid. </li>
+</ul>
+
+<h3>Sample Input/Output</h3>
+<p> 
+<b>Input:</b> <code>N x1 y1 x2 y2 ...</code>: The first number (N) will be the
+number of vertices, followed by 2N numbers which will represent the x and y
+coordinates of the N vertices. You can assume the inputted polygon is convex.<br /> 
+<b>Output:</b> <code>area</code>: The code will return the area of the polygon
+thus formed. Use the functions you've defined above to do this.
+</p>
+
+</body>

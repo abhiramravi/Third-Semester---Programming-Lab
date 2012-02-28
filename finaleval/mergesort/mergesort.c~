@@ -1,0 +1,67 @@
+/*
+ * Abhiram CS10B060
+ * Mergesort
+ */
+
+#include "mergesort.h"
+#include<stdio.h>
+int answer = 0;
+void mergesort( int n, int* arr)
+/* Sorts the entire array using msort */
+{
+	msort( arr, 1, n );
+}
+void msort(int* a, int p, int r)
+/* Sorts the portion from index p to index r of the given array a */
+{
+	if( p < r )
+	{
+		int q = ( p + r )/2;
+		msort(a, p, q);
+		msort(a, q+1, r);
+		merge(a, p, q, r);
+	}
+}
+void merge(int* a, int p, int q, int r)
+/*
+ * Merges the two parts of the given array, assuming each part is already sorted.
+ * @params : a = array under consideration
+ * 			 p to q = indices of the first part of the array that have already been sorted
+ *			 q+1 to r = indices of the second part of the array that have already been sorted
+ */
+{
+	
+	int n1 = q - p + 1 ;
+	int n2 = r - q ;
+	int l[n1+2], z[n2+2];
+	int i,j,k;
+	/* Split the given array into two arrays p to q, and q+1 to r */
+	for( i = 1; i <= n1; i++ )
+	{
+		l[i] = a[p+i-1];
+	}
+	for( j=1; j<=n2; j++ )
+	{
+		z[j] = a[q+j];
+	}
+	/* Set the last elements to infinity */
+	l[n1+1] = 32000;
+	z[n2+1] = 32000;
+	i = 1; j = 1;
+	/* Compare the top two elements of the arrays, and change 'a[k]' accordingly. Stops at r. */
+	for( k=p; k<=r; k++ )
+	{
+		if( l[i] <= z[j] )
+		{
+			a[k] = l[i];
+			i++;
+		}
+		else
+		{
+			a[k] = z[j];
+			j++;
+			answer = answer + 1;
+		}	
+	}
+}
+int main
